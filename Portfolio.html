@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affreen | Freelance Portfolio</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #0c0c12;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: #15151e;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #ff69b4;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #ff69b4;
+}
+
+section {
+    padding: 85px 10%;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tag {
+    color: #ff69b4;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 7vw, 65px);
+    margin: 18px 0;
+}
+
+.hero h1 span {
+    color: #ff69b4;
+}
+
+.hero p {
+    color: #bbb;
+    max-width: 650px;
+    line-height: 1.8;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff69b4;
+    color: #111;
+    padding: 13px 25px;
+    margin-top: 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: white;
+}
+
+.heading {
+    font-size: 35px;
+    margin-bottom: 25px;
+}
+
+.heading span {
+    color: #ff69b4;
+}
+
+.about {
+    background: #14141d;
+}
+
+.about p {
+    color: #bbb;
+    line-height: 1.9;
+    max-width: 800px;
+}
+
+.skills-grid, .services-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #191923;
+    padding: 28px;
+    border: 1px solid #30303b;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: #ff69b4;
+}
+
+.card h3 {
+    color: #ff69b4;
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #bbb;
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.skill-bar {
+    background: #333;
+    height: 7px;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.skill-bar div {
+    height: 100%;
+    background: #ff69b4;
+    border-radius: 10px;
+}
+
+/* Projects */
+.project {
+    background: #191923;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #30303b;
+}
+
+.project h3 {
+    color: #ff69b4;
+    margin-bottom: 10px;
+}
+
+.project p {
+    color: #bbb;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Contact */
+.contact {
+    background: #14141d;
+}
+
+form {
+    max-width: 550px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: #22222d;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 8px;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #ff69b4;
+}
+
+textarea {
+    height: 130px;
+    resize: vertical;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #999;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+@media(max-width: 700px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #15151e;
+        padding: 20px;
+    }
+
+    nav.active {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    section {
+        padding: 65px 7%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">AFFREEN.</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="navbar">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#skills" onclick="closeMenu()">Skills</a>
+        <a href="#services" onclick="closeMenu()">Services</a>
+        <a href="#projects" onclick="closeMenu()">Projects</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+    <span class="tag">WELCOME TO MY PORTFOLIO</span>
+
+    <h1>Hello, I'm <span>Affreen</span></h1>
+
+    <h2 id="typing" style="color:#ff69b4; margin-bottom:20px;">
+        Freelancer
+    </h2>
+
+    <p>
+        I am a creative freelancer interested in web development,
+        graphic designing, content writing and storytelling.
+        I love turning ideas into beautiful digital experiences.
+    </p>
+
+    <a href="#services" class="btn">Explore My Services</a>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <h2 class="heading">About <span>Me</span></h2>
+
+    <p>
+        Hello! I'm Affreen, a creative and enthusiastic freelancer.
+        I enjoy working on creative and technical projects.
+        My interests include HTML, CSS, Java, JavaScript,
+        graphic designing, content writing and story writing.
+
+        I focus on creativity, quality and continuous learning.
+        My goal is to deliver meaningful work and build
+        professional relationships with clients.
+    </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <h2 class="heading">My <span>Skills</span></h2>
+
+    <div class="skills-grid">
+
+        <div class="card">
+            <h3>HTML</h3>
+            <p>Building structured and organized web pages.</p>
+            <div class="skill-bar"><div style="width:80%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>CSS</h3>
+            <p>Creating attractive and responsive website designs.</p>
+            <div class="skill-bar"><div style="width:75%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>Java</h3>
+            <p>Learning programming concepts and Java basics.</p>
+            <div class="skill-bar"><div style="width:45%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>JavaScript</h3>
+            <p>Adding interactivity and functionality to websites.</p>
+            <div class="skill-bar"><div style="width:45%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>Graphic Design</h3>
+            <p>Creative posters, banners and digital designs.</p>
+            <div class="skill-bar"><div style="width:75%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>Content Writing</h3>
+            <p>Writing engaging and informative content.</p>
+            <div class="skill-bar"><div style="width:80%"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>Story Writing</h3>
+            <p>Creating imaginative stories and scripts.</p>
+            <div class="skill-bar"><div style="width:85%"></div></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="about">
+    <h2 class="heading">My <span>Services</span></h2>
+
+    <div class="services-grid">
+
+        <div class="card">
+            <h3>💻 Web Development</h3>
+            <p>HTML, CSS, Java and basic JavaScript website development.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎨 Graphic Designing</h3>
+            <p>Posters, social media posts, banners and Canva designs.</p>
+        </div>
+
+        <div class="card">
+            <h3>✍️ Content Writing</h3>
+            <p>Articles, blogs, captions and website content.</p>
+        </div>
+
+        <div class="card">
+            <h3>📖 Story Writing</h3>
+            <p>Creative stories, thriller scripts and storytelling.</p>
+        </div>
+
+        <div class="card">
+            <h3>🤖 AI Content</h3>
+            <p>AI-assisted content ideas, creative writing and scripts.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+    <h2 class="heading">My <span>Projects</span></h2>
+
+    <div class="projects-grid">
+
+        <div class="project">
+            <h3>Personal Portfolio</h3>
+            <p>A personal portfolio website built using HTML and CSS.</p>
+        </div>
+
+        <div class="project">
+            <h3>Login Form Design</h3>
+            <p>A modern and responsive login form interface.</p>
+        </div>
+
+        <div class="project">
+            <h3>Creative Story Scripts</h3>
+            <p>Original storytelling concepts and thriller scripts.</p>
+        </div>
+
+        <div class="project">
+            <h3>Graphic Design</h3>
+            <p>Creative digital design concepts and social media artwork.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2 class="heading">Contact <span>Me</span></h2>
+
+    <p style="color:#bbb; margin-bottom:20px;">
+        Have a project in mind? Let's work together!
+    </p>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <input type="email" id="email" placeholder="Your Email" required>
+
+        <input type="text" id="subject" placeholder="Project Subject" required>
+
+        <textarea id="message" placeholder="Your Message" required></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+    </form>
+
+    <p id="status" style="margin-top:15px;color:#ff69b4;"></p>
+</section>
+
+<footer>
+    © 2026 Affreen | Freelance Portfolio
+    <p style="margin-top:8px;">Designed with creativity ❤️</p>
+</footer>
+
+<script>
+const words = [
+    "Freelancer",
+    "Web Developer",
+    "Graphic Designer",
+    "Content Writer",
+    "Story Writer"
+];
+
+let wordIndex = 0;
+
+function changeText() {
+    document.getElementById("typing").textContent =
+        words[wordIndex];
+
+    wordIndex = (wordIndex + 1) % words.length;
+}
+
+setInterval(changeText, 2000);
+
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+function closeMenu() {
+    document.getElementById("navbar").classList.remove("active");
+}
+
+document.getElementById("contactForm").addEventListener("submit",
+function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const subject = document.getElementById("subject").value;
+    const message = document.getElementById("message").value;
+
+    const yourEmail = "YOUR_EMAIL@gmail.com";
+
+    const mailBody =
+        "Name: " + name +
+        "\nEmail: " + email +
+        "\nSubject: " + subject +
+        "\nMessage: " + message;
+
+    document.getElementById("status").textContent =
+        "Opening your email app...";
+
+    window.location.href =
+        "mailto:" + yourEmail +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(mailBody);
+});
+</script>
+
+</body>
+</html>
